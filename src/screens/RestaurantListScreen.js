@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Text, View, ScrollView } from "react-native";
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard from "../components/RestaurantCard";
 
 function RestaurantList() {
   const [restaurants, setRestaurants] = useState();
@@ -17,7 +17,6 @@ function RestaurantList() {
 
   return (
     <View>
-      <Text>Restaurants</Text>
       {!restaurants ? (
         <Text>Loading...</Text>
       ) : (
