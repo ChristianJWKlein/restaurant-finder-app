@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import { RestaurantContext } from "../../App";
 
 export default function RestaurantCard({ restaurant }) {
+  const { setSelectedRestaurant } = useContext(RestaurantContext);
   const navigation = useNavigation();
   const handlePress = () => {
+    setSelectedRestaurant(restaurant);
     navigation.navigate("Details");
   };
 

@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Text } from "react-native";
+import { RestaurantContext } from "../../App";
 
 export default function Details() {
-  return <Text>Details</Text>;
+  const { selectedRestaurant } = useContext(RestaurantContext);
+  return <Text>{selectedRestaurant.name}</Text>;
 }
