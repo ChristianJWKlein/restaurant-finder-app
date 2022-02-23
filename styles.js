@@ -14,5 +14,14 @@ export default StyleSheet.create({
     fontSize: 28,
     fontWeight: "600",
     padding: 4,
+    fontWeight: "bold",
+    color: "navy",
+  },
+  cardSubTitle: {
+    fontSize: 12,
+    fontWeight: "600",
+    padding: 4,
+    fontWeight: "bold",
+    color: "red",
   },
 });

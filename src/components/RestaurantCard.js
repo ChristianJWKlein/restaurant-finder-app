@@ -18,6 +18,7 @@ export default function RestaurantCard({ restaurant }) {
       <View style={styles.card}>
         <Image source={{ uri: restaurant.photoUrl }} style={styles.cardImage} />
         <Text style={styles.cardTitle}>{restaurant.name}</Text>
+        <Text style={styles.cardSubTitle}>{restaurant.address}</Text>
       </View>
     </TouchableOpacity>
   );
