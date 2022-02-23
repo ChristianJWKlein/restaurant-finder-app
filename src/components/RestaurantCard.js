@@ -1,12 +1,20 @@
 import React from "react";
-import { View, Text, Image, StyleSheet } from "react-native";
+import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 export default function RestaurantCard({ restaurant }) {
+  const navigation = useNavigation();
+  const handlePress = () => {
+    navigation.navigate("Details");
+  };
+
   return (
-    <View style={styles.card}>
-      <Image source={{ uri: restaurant.photoUrl }} style={styles.cardImage} />
-      <Text style={styles.cardTitle}>{restaurant.name}</Text>
-    </View>
+    <TouchableOpacity onPress={handlePress}>
+      <View style={styles.card}>
+        <Image source={{ uri: restaurant.photoUrl }} style={styles.cardImage} />
+        <Text style={styles.cardTitle}>{restaurant.name}</Text>
+      </View>
+    </TouchableOpacity>
   );
 }
 
