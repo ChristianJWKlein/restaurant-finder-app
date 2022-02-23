@@ -17,8 +17,6 @@ function RestaurantList() {
       .catch(alert);
   }, []);
 
-  console.log(restaurants);
-
   const navigation = useNavigation();
 
   const goToNewRestaurant = () => {
