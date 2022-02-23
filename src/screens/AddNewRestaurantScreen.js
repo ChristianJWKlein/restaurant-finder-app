@@ -4,30 +4,21 @@ import { Input, Button } from "react-native-elements";
 import { useNavigation } from "@react-navigation/native";
 
 export default function AddNewRestaurantScreen() {
-  const [restaurantName, setRestaurantName] = useState();
-  const [address, setAddress] = useState();
-  const [photo, setPhoto] = useState();
-  const [rating, setRating] = useState(0);
   const [buttonDisabled, setButtonDisabled] = useState(true);
+  const [newRestaurant, setNewRestaurant] = useState({});
 
   const navigation = useNavigation();
 
-  const newRestaurant = {
-    address: address,
-    name: restaurantName,
-    numRatings: rating,
-    photoUrl: photo,
-    rating: 4.75,
-  };
-
   useEffect(() => {
     if (
-      (newRestaurant.address &&
-        newRestaurant.name &&
-        newRestaurant.numRatings != undefined) ||
-      ""
+      newRestaurant.address &&
+      newRestaurant.name &&
+      newRestaurant.photo &&
+      newRestaurant.rating
     ) {
       setButtonDisabled(false);
+    } else {
+      setButtonDisabled(true);
     }
   }, [newRestaurant]);
 
@@ -36,7 +27,7 @@ export default function AddNewRestaurantScreen() {
       method: "POST",
       headers: {
         Accept: "application/json",
-        "Content-Type": "application.json",
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(newRestaurant),
     })
@@ -52,15 +43,30 @@ export default function AddNewRestaurantScreen() {
         <Input
           placeholder="Restaurant Name"
           spellCheck
-          onChangeText={(text) => setRestaurantName(text)}
+          onChangeText={(text) =>
+            setNewRestaurant({ ...newRestaurant, name: text })
+          }
         />
-        <Input placeholder="Address" onChangeText={setAddress} />
-        <Input placeholder="Photo" keyboardType="url" onChangeText={setPhoto} />
+        <Input
+          placeholder="Address"
+          onChangeText={(text) =>
+            setNewRestaurant({ ...newRestaurant, address: text })
+          }
+        />
+        <Input
+          placeholder="Photo"
+          keyboardType="url"
+          onChangeText={(text) =>
+            setNewRestaurant({ ...newRestaurant, photo: text })
+          }
+        />
         <Input
           placeholder="Rating"
           keyboardType="numeric"
           maxLength="1"
-          onChangeText={setRating}
+          onChangeText={(text) =>
+            setNewRestaurant({ ...newRestaurant, rating: text })
+          }
         />
       </View>
       <Button
